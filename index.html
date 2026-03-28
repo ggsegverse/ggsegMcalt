@@ -62,7 +62,42 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-Mayo Clinic Adult Lifespan Template (MCALT) brain atlas for the 'ggseg' ecosystem. Provides 'ggseg_atlas' objects for population-specific brain parcellation optimized for aging and Alzheimer's Disease research.
+<div class="section level1">
+<div class="page-header"><h1 id="ggsegmcalt">ggsegMcalt<a class="anchor" aria-label="anchor" href="#ggsegmcalt"></a>
+</h1></div>
+<!-- badges: start -->
+
+<p>MCALT Atlas for the ggsegverse Ecosystem.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># From r-universe</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ggsegMcalt"</span>, repos <span class="op">=</span> <span class="st">"https://ggsegverse.r-universe.dev"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># From GitHub</span></span>
+<span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ggsegverse/ggsegMcalt"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="atlases">Atlases<a class="anchor" aria-label="anchor" href="#atlases"></a>
+</h2>
+<div class="section level3">
+<h3 id="mcalt">mcalt<a class="anchor" aria-label="anchor" href="#mcalt"></a>
+</h3>
+<p>Mayo Clinic Adult Lifespan Template ADIR122 parcellation.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ggsegverse/ggsegMcalt" class="external-link">ggsegMcalt</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">mcalt</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-mcalt-1.png" alt="" width="100%"> ## Data source</p>
+<p><a href="https://www.nitrc.org/projects/mcalt/" class="external-link">NITRC</a>.</p>
+<ul>
+<li><p><strong>Reference</strong>: Schwarz et al. (2017) <a href="https://doi.org/10.1016/j.jalz.2017.06.1071" class="external-link">doi:10.1016/j.jalz.2017.06.1071</a></p></li>
+<li><p><strong>Date obtained</strong>: 2026-03-28</p></li>
+</ul>
+</div>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -99,7 +134,13 @@ Mayo Clinic Adult Lifespan Template (MCALT) brain atlas for the 'ggseg' ecosyste
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/ggsegverse/ggsegMcalt/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ggsegverse/ggsegMcalt/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://ggsegverse.r-universe.dev/ggsegMcalt" class="external-link"><img src="https://ggsegverse.r-universe.dev/badges/ggsegMcalt" alt="r-universe"></a></li>
+</ul>
+</div>
 
   </div>
 </div>

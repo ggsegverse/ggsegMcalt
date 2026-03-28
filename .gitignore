@@ -1,0 +1,31 @@
+# R specific
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Package specific
+*.Rcheck
+*.tar.gz
+
+# IDE
+.idea/
+*.swp
+*~
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# pkgdown
+docs/
+
+# Temporary files
+inst/doc
+data-raw/**/*.nii
+data-raw/**/*.nii.gz
+data-raw/**/*.mgz
+*.nii
+*.nii.gz
+*.mgz
+*.mat

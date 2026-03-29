@@ -16,4 +16,5 @@
 #' @examples
 #' mcalt()
 # fmt: skip
+#' plot(mcalt())
 mcalt <- function() .mcalt

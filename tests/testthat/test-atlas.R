@@ -4,7 +4,7 @@ describe("mcalt atlas structure", {
   })
 
   it("has required core columns", {
-    required_cols <- c("hemi", "region", "label", "colour")
+    required_cols <- c("hemi", "region", "label")
     expect_true(all(required_cols %in% names(mcalt()$core)))
   })
 

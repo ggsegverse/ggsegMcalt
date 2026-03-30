@@ -19,16 +19,13 @@ atlases <- create_wholebrain_from_volume(
   cleanup = FALSE
 )
 
-objs <- list()
-if (!is.null(atlases$cortical)) {
-  objs$.mcalt_cortical <- atlases$cortical
-  print(atlases$cortical)
-  plot(atlases$cortical)
-}
-if (!is.null(atlases$subcortical)) {
-  objs$.mcalt_subcortical <- atlases$subcortical
-  print(atlases$subcortical)
-  plot(atlases$subcortical)
-}
+.mcalt_cortical <- atlases$cortical
+.mcalt_subcortical <- atlases$subcortical
 
-do.call(usethis::use_data, c(objs, list(overwrite = TRUE, compress = "xz", internal = TRUE)))
+print(.mcalt_cortical)
+plot(.mcalt_cortical)
+print(.mcalt_subcortical)
+plot(.mcalt_subcortical)
+
+usethis::use_data(.mcalt_cortical, .mcalt_subcortical,
+  overwrite = TRUE, compress = "xz", internal = TRUE)

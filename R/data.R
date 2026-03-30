@@ -1,20 +1,34 @@
-#' MCALT Brain Atlas
+#' MCALT Cortical Atlas
 #'
-#' Brain atlas for the Mayo Clinic Adult Lifespan Template (MCALT)
-#' cortical parcellation, optimized for aging and Alzheimer's Disease research.
+#' Cortical parcellation from the Mayo Clinic Adult Lifespan Template (MCALT)
+#' ADIR122 atlas.
 #'
 #' @family ggseg_atlases
 #'
-#' @references Schwarz CG, et al. (2017). "A large-scale comparison of cortical
-#'   thickness and volume methods for measuring Alzheimer's disease severity."
-#'   *NeuroImage: Clinical*, 11:802-812.
-#'   \doi{10.1016/j.nicl.2016.01.019}
+#' @references Schwarz CG, et al. (2017). Alzheimer's & Dementia, 13(7):P1071.
+#'   \doi{10.1016/j.jalz.2017.06.1071}
 #'
-#' @return A [ggseg.formats::ggseg_atlas] object.
+#' @return A [ggseg.formats::ggseg_atlas] object (cortical).
 #' @import ggseg.formats
 #' @export
 #' @examples
-#' mcalt()
-# fmt: skip
-#' plot(mcalt())
-mcalt <- function() .mcalt
+#' mcalt_cortical()
+#' plot(mcalt_cortical())
+mcalt_cortical <- function() .mcalt_cortical
+
+#' MCALT Subcortical Atlas
+#'
+#' Subcortical parcellation from the Mayo Clinic Adult Lifespan Template (MCALT)
+#' ADIR122 atlas.
+#'
+#' @family ggseg_atlases
+#'
+#' @references Schwarz CG, et al. (2017). Alzheimer's & Dementia, 13(7):P1071.
+#'   \doi{10.1016/j.jalz.2017.06.1071}
+#'
+#' @return A [ggseg.formats::ggseg_atlas] object (subcortical).
+#' @export
+#' @examples
+#' mcalt_subcortical()
+#' plot(mcalt_subcortical())
+mcalt_subcortical <- function() .mcalt_subcortical

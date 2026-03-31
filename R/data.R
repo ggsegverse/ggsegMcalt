@@ -4,6 +4,7 @@
 #' ADIR122 atlas.
 #'
 #' @family ggseg_atlases
+#' @family cortical_atlases
 #'
 #' @references Schwarz CG, et al. (2017). Alzheimer's & Dementia, 13(7):P1071.
 #'   \doi{10.1016/j.jalz.2017.06.1071}
@@ -22,6 +23,7 @@ mcalt_cortical <- function() .mcalt_cortical
 #' ADIR122 atlas.
 #'
 #' @family ggseg_atlases
+#' @family subcortical_atlases
 #'
 #' @references Schwarz CG, et al. (2017). Alzheimer's & Dementia, 13(7):P1071.
 #'   \doi{10.1016/j.jalz.2017.06.1071}

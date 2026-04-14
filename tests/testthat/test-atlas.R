@@ -58,6 +58,7 @@ describe("mcalt 2D plotting", {
 describe("mcalt 3D plotting", {
   it("can be rendered with ggseg3d", {
     skip_if_not_installed("ggseg3d")
+    skip_if_not_installed("ggseg.meshes")
     skip_on_ci()
 
     p <- ggseg3d::ggseg3d(atlas = mcalt())

@@ -15,7 +15,7 @@
 #' @examples
 #' mcalt_cortical()
 #' plot(mcalt_cortical())
-mcalt_cortical <- function() .mcalt_cortical
+mcalt_cortical <- function() .mcalt_cortical # nolint: object_usage_linter.
 
 #' MCALT Subcortical Atlas
 #'
@@ -33,7 +33,7 @@ mcalt_cortical <- function() .mcalt_cortical
 #' @examples
 #' mcalt_subcortical()
 #' plot(mcalt_subcortical())
-mcalt_subcortical <- function() .mcalt_subcortical
+mcalt_subcortical <- function() .mcalt_subcortical # nolint: object_usage_linter.
 
 #' MCALT Cerebellar Atlas
 #'
@@ -51,4 +51,4 @@ mcalt_subcortical <- function() .mcalt_subcortical
 #' @examples
 #' mcalt_cerebellar()
 #' plot(mcalt_cerebellar())
-mcalt_cerebellar <- function() .mcalt_cerebellar
+mcalt_cerebellar <- function() .mcalt_cerebellar # nolint: object_usage_linter.

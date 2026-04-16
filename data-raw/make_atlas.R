@@ -31,9 +31,14 @@ plot(.mcalt_subcortical)
 if (!is.null(.mcalt_cerebellar)) {
   print(.mcalt_cerebellar)
   plot(.mcalt_cerebellar)
-  usethis::use_data(.mcalt_cortical, .mcalt_subcortical,
-    .mcalt_cerebellar, overwrite = TRUE, compress = "xz", internal = TRUE)
+  usethis::use_data(
+    .mcalt_cortical, .mcalt_subcortical,
+    .mcalt_cerebellar,
+    overwrite = TRUE, compress = "xz", internal = TRUE
+  )
 } else {
-  usethis::use_data(.mcalt_cortical, .mcalt_subcortical,
-    overwrite = TRUE, compress = "xz", internal = TRUE)
+  usethis::use_data(
+    .mcalt_cortical, .mcalt_subcortical,
+    overwrite = TRUE, compress = "xz", internal = TRUE
+  )
 }

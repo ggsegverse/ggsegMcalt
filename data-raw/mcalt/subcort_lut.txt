@@ -1,0 +1,46 @@
+ 21  region_0021                       0   0   0   0
+ 22  region_0022                       0   0   0   0
+ 41  region_0041                       0   0   0   0
+ 42  region_0042                       0   0   0   0
+ 71  region_0071                       0   0   0   0
+ 72  region_0072                       0   0   0   0
+ 73  region_0073                       0   0   0   0
+ 74  region_0074                       0   0   0   0
+ 75  region_0075                       0   0   0   0
+ 76  region_0076                       0   0   0   0
+ 77  region_0077                       0   0   0   0
+ 78  region_0078                       0   0   0   0
+ 91  region_0091                       0   0   0   0
+ 92  region_0092                       0   0   0   0
+ 93  region_0093                       0   0   0   0
+ 94  region_0094                       0   0   0   0
+ 95  region_0095                       0   0   0   0
+ 96  region_0096                       0   0   0   0
+ 97  region_0097                       0   0   0   0
+ 98  region_0098                       0   0   0   0
+ 99  region_0099                       0   0   0   0
+100  region_0100                       0   0   0   0
+101  region_0101                       0   0   0   0
+102  region_0102                       0   0   0   0
+103  region_0103                       0   0   0   0
+104  region_0104                       0   0   0   0
+105  region_0105                       0   0   0   0
+106  region_0106                       0   0   0   0
+107  region_0107                       0   0   0   0
+108  region_0108                       0   0   0   0
+109  region_0109                       0   0   0   0
+110  region_0110                       0   0   0   0
+111  region_0111                       0   0   0   0
+112  region_0112                       0   0   0   0
+113  region_0113                       0   0   0   0
+114  region_0114                       0   0   0   0
+115  region_0115                       0   0   0   0
+116  region_0116                       0   0   0   0
+117  region_0117                       0   0   0   0
+118  region_0118                       0   0   0   0
+119  region_0119                       0   0   0   0
+120  region_0120                       0   0   0   0
+123  region_0123                       0   0   0   0
+124  region_0124                       0   0   0   0
+126  region_0126                       0   0   0   0
+

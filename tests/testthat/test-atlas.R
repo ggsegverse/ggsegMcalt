@@ -35,15 +35,12 @@ describe("mcalt 3D rendering support", {
 
 describe("mcalt 2D plotting", {
   it("can be plotted with ggseg", {
-    skip_if_not_installed("ggseg")
 
     p <- ggplot2::ggplot() + ggseg::geom_brain(atlas = mcalt())
     expect_s3_class(p, c("gg", "ggplot"))
   })
 
   it("can be plotted with region fill", {
-    skip_if_not_installed("ggseg")
-    skip_if_not_installed("ggplot2")
 
     p <- ggplot2::ggplot() +
       ggseg::geom_brain(
@@ -57,7 +54,6 @@ describe("mcalt 2D plotting", {
 
 describe("mcalt 3D plotting", {
   it("can be rendered with ggseg3d", {
-    skip_if_not_installed("ggseg3d")
     skip_if_not_installed("ggseg.meshes")
     skip_on_ci()
 

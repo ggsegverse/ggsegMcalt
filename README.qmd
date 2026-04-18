@@ -1,0 +1,90 @@
+---
+format: gfm
+---
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  fig.width = 10,
+  fig.retina = 3
+)
+```
+
+# ggsegMcalt
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/ggsegverse/ggsegMcalt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ggsegverse/ggsegMcalt/actions/workflows/R-CMD-check.yaml)
+[![r-universe](https://ggseg.r-universe.dev/badges/ggsegMcalt)](https://ggseg.r-universe.dev/ggsegMcalt)
+<!-- badges: end -->
+
+MCALT (Mayo Clinic Adult Lifespan Template) atlas for the ggseg ecosystem.
+
+## Installation
+
+We recommend installing the ggseg-atlases through the ggseg
+[r-universe](https://ggseg.r-universe.dev/ui#builds):
+
+```{r}
+#| label: install-r-universe
+#| eval: false
+options(repos = c(
+  ggseg = "https://ggseg.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
+
+install.packages("ggsegMcalt")
+```
+
+You can install this package from [GitHub](https://github.com/) with:
+
+```r
+# install.packages("pak")
+pak::pak("ggsegverse/ggsegMcalt")
+```
+
+## Cortical atlas
+
+```{r}
+#| label: cortical
+library(ggseg)
+library(ggsegMcalt)
+library(ggplot2)
+
+ggplot() +
+  geom_brain(
+    atlas = mcalt_cortical(),
+    mapping = aes(fill = label),
+    position = position_brain(hemi ~ view),
+    show.legend = FALSE
+  ) +
+  scale_fill_manual(values = mcalt_cortical()$palette, na.value = "grey") +
+  theme_void()
+```
+
+## Subcortical atlas
+
+```{r}
+#| label: subcortical
+ggplot() +
+  geom_brain(
+    atlas = mcalt_subcortical(),
+    mapping = aes(fill = label),
+    position = position_brain(. ~ view),
+    show.legend = FALSE
+  ) +
+  scale_fill_manual(values = mcalt_subcortical()$palette, na.value = "grey") +
+  theme_void()
+```
+
+## Data source
+
+Schwarz CG et al. (2017). The Mayo Clinic Adult Lifespan Template (MCALT):
+Better quantification across the lifespan. *Alzheimer's & Dementia*, 13(7),
+P93-P94. [doi:10.1016/j.jalz.2017.06.1071](https://doi.org/10.1016/j.jalz.2017.06.1071)

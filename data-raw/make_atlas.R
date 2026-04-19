@@ -21,11 +21,24 @@ atlases <- create_wholebrain_from_volume(
 
 .mcalt_cortical <- atlases$cortical
 .mcalt_subcortical <- atlases$subcortical
+.mcalt_cerebellar <- atlases$cerebellar
 
 print(.mcalt_cortical)
 plot(.mcalt_cortical)
 print(.mcalt_subcortical)
 plot(.mcalt_subcortical)
 
-usethis::use_data(.mcalt_cortical, .mcalt_subcortical,
-  overwrite = TRUE, compress = "xz", internal = TRUE)
+if (!is.null(.mcalt_cerebellar)) {
+  print(.mcalt_cerebellar)
+  plot(.mcalt_cerebellar)
+  usethis::use_data(
+    .mcalt_cortical, .mcalt_subcortical,
+    .mcalt_cerebellar,
+    overwrite = TRUE, compress = "xz", internal = TRUE
+  )
+} else {
+  usethis::use_data(
+    .mcalt_cortical, .mcalt_subcortical,
+    overwrite = TRUE, compress = "xz", internal = TRUE
+  )
+}

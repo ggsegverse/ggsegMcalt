@@ -14,8 +14,8 @@
 #' @export
 #' @examples
 #' mcalt_cortical()
-#' plot(mcalt_cortical())
-mcalt_cortical <- function() .mcalt_cortical # nolint: object_usage_linter.
+#' \dontrun{plot(mcalt_cortical())}
+mcalt_cortical <- function() .mcalt_cortical
 
 #' MCALT Subcortical Atlas
 #'
@@ -32,6 +32,6 @@ mcalt_cortical <- function() .mcalt_cortical # nolint: object_usage_linter.
 #' @export
 #' @examples
 #' mcalt_subcortical()
-#' plot(mcalt_subcortical())
+#' \dontrun{plot(mcalt_subcortical())}
 # nolint next: object_usage_linter.
 mcalt_subcortical <- function() .mcalt_subcortical

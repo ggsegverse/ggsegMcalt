@@ -15,7 +15,7 @@ ADIR122 atlas.
 }
 \examples{
 mcalt_subcortical()
-plot(mcalt_subcortical())
+\dontrun{plot(mcalt_subcortical())}
 }
 \references{
 Schwarz CG, et al. (2017). Alzheimer's & Dementia, 13(7):P1071.

@@ -15,7 +15,7 @@ ADIR122 atlas.
 }
 \examples{
 mcalt_cortical()
-plot(mcalt_cortical())
+\dontrun{plot(mcalt_cortical())}
 }
 \references{
 Schwarz CG, et al. (2017). Alzheimer's & Dementia, 13(7):P1071.

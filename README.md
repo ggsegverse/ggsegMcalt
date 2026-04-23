@@ -1,44 +1,61 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
 # ggsegMcalt
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/ggsegverse/ggsegMcalt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ggsegverse/ggsegMcalt/actions/workflows/R-CMD-check.yaml)
-[![r-universe](https://ggsegverse.r-universe.dev/badges/ggsegMcalt)](https://ggsegverse.r-universe.dev/ggsegMcalt)
+[![r-universe](https://ggseg.r-universe.dev/badges/ggsegMcalt.png)](https://ggseg.r-universe.dev/ggsegMcalt)
 <!-- badges: end -->
 
-MCALT Atlas for the ggsegverse Ecosystem.
+MCALT (Mayo Clinic Adult Lifespan Template) atlas for the ggseg
+ecosystem.
 
 ## Installation
 
-``` r
-# From r-universe
-install.packages("ggsegMcalt", repos = "https://ggsegverse.r-universe.dev")
+We recommend installing the ggseg-atlases through the ggseg
+[r-universe](https://ggseg.r-universe.dev/ui#builds):
 
-# From GitHub
-# install.packages("remotes")
-remotes::install_github("ggsegverse/ggsegMcalt")
+``` r
+options(repos = c(
+  ggseg = "https://ggseg.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
+
+install.packages("ggsegMcalt")
 ```
 
-## Atlases
-
-### mcalt
-
-Mayo Clinic Adult Lifespan Template ADIR122 parcellation.
+You can install this package from [GitHub](https://github.com/) with:
 
 ``` r
+# install.packages("pak")
+pak::pak("ggsegverse/ggsegMcalt")
+```
+
+## Cortical atlas
+
+``` r
+library(ggseg)
 library(ggsegMcalt)
-plot(mcalt())
+
+plot(mcalt_cortical())
 ```
 
-<img src="man/figures/README-mcalt-1.png" alt="" width="100%" /> \##
-Data source
+<img src="man/figures/README-cortical-1.png" style="width:100.0%" />
 
-[NITRC](https://www.nitrc.org/projects/mcalt/).
+## Subcortical atlas
 
-- **Reference**: Schwarz et al. (2017)
-  [doi:10.1016/j.jalz.2017.06.1071](https://doi.org/10.1016/j.jalz.2017.06.1071)
+``` r
+plot(mcalt_subcortical())
+```
 
-- **Date obtained**: 2026-03-28
+<img src="man/figures/README-subcortical-1.png" style="width:100.0%" />
+
+## Data source
+
+Schwarz CG et al. (2017). The Mayo Clinic Adult Lifespan Template
+(MCALT): Better quantification across the lifespan. *Alzheimer’s &
+Dementia*, 13(7), P93-P94.
+[doi:10.1016/j.jalz.2017.06.1071](https://doi.org/10.1016/j.jalz.2017.06.1071)

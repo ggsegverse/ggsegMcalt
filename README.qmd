@@ -55,32 +55,15 @@ pak::pak("ggsegverse/ggsegMcalt")
 #| label: cortical
 library(ggseg)
 library(ggsegMcalt)
-library(ggplot2)
 
-ggplot() +
-  geom_brain(
-    atlas = mcalt_cortical(),
-    mapping = aes(fill = label),
-    position = position_brain(hemi ~ view),
-    show.legend = FALSE
-  ) +
-  scale_fill_manual(values = mcalt_cortical()$palette, na.value = "grey") +
-  theme_void()
+plot(mcalt_cortical())
 ```
 
 ## Subcortical atlas
 
 ```{r}
 #| label: subcortical
-ggplot() +
-  geom_brain(
-    atlas = mcalt_subcortical(),
-    mapping = aes(fill = label),
-    position = position_brain(. ~ view),
-    show.legend = FALSE
-  ) +
-  scale_fill_manual(values = mcalt_subcortical()$palette, na.value = "grey") +
-  theme_void()
+plot(mcalt_subcortical())
 ```
 
 ## Data source

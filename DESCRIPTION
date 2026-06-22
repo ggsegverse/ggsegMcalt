@@ -1,6 +1,6 @@
 Package: ggsegMcalt
 Title: MCALT Atlas for the 'ggseg' Ecosystem
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: c(person("Athanasia Mo", "Mowinckel",
                     email = "a.m.mowinckel@psykologi.uio.no",
                     role = c("aut", "cre"),

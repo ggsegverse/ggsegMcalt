@@ -1,99 +1,104 @@
+atlases <- list(
+  mcalt_cortical = mcalt_cortical(),
+  mcalt_subcortical = mcalt_subcortical()
+)
+
 describe("mcalt atlas structure", {
   it("is a valid ggseg_atlas object", {
-    expect_s3_class(mcalt(), "ggseg_atlas")
-  })
-
-  it("has required core columns", {
-    required_cols <- c("hemi", "region", "label")
-    expect_true(all(required_cols %in% names(mcalt()$core)))
-  })
-
-  it("has valid hemisphere values", {
-    valid_hemis <- c("left", "right")
-    hemis <- unique(mcalt()$core$hemi)
-    hemis <- hemis[!is.na(hemis)]
-    expect_true(all(hemis %in% valid_hemis))
-  })
-
-  it("has atlas name and type", {
-    expect_true(nchar(mcalt()$atlas) > 0)
-    expect_true(mcalt()$type %in% c("cortical", "subcortical", "tract"))
-  })
-
-  it("has non-empty core", {
-    expect_true(nrow(mcalt()$core) > 0)
-  })
-})
-
-
-describe("mcalt 3D rendering support", {
-  it("has vertex data for 3D rendering", {
-    expect_true(!is.null(mcalt()$data$vertices))
-  })
-})
-
-
-describe("mcalt 2D plotting", {
-  it("can be plotted with ggseg", {
-
-    p <- ggplot2::ggplot() + ggseg::geom_brain(atlas = mcalt())
-    expect_s3_class(p, c("gg", "ggplot"))
-  })
-
-  it("can be plotted with region fill", {
-
-    p <- ggplot2::ggplot() +
-      ggseg::geom_brain(
-        atlas = mcalt(),
-        mapping = ggplot2::aes(fill = region)
-      )
-    expect_s3_class(p, c("gg", "ggplot"))
-  })
-})
-
-
-describe("mcalt 3D plotting", {
-  it("can be rendered with ggseg3d", {
-    skip_if_not_installed("ggseg.meshes")
-    skip_on_ci()
-
-    p <- ggseg3d::ggseg3d(atlas = mcalt())
-    expect_s3_class(p, "htmlwidget")
-  })
-})
-
-
-describe("mcalt data quality", {
-  it("has unique labels per hemisphere", {
-    labels_by_hemi <- split(mcalt()$core$label, mcalt()$core$hemi)
-
-    for (hemi in names(labels_by_hemi)) {
-      labels <- labels_by_hemi[[hemi]]
-      labels <- labels[!is.na(labels)]
-      expect_equal(
-        length(labels),
-        length(unique(labels)),
-        info = paste("Duplicate labels in", hemi, "hemisphere")
-      )
+    for (atlas in atlases) {
+      expect_s3_class(atlas, "ggseg_atlas")
+      expect_true(is_ggseg_atlas(atlas))
     }
   })
 
-  it("has no empty region names (except NA for wall/unknown)", {
-    regions <- mcalt()$core$region
-    non_na_regions <- regions[!is.na(regions)]
-    expect_true(all(nchar(non_na_regions) > 0))
+  it("has required core columns", {
+    for (atlas in atlases) {
+      expect_true(all(c("hemi", "region", "label") %in% names(atlas$core)))
+    }
   })
 
-  it("has valid hex colours", {
-    colours <- mcalt()$core$colour
-    non_na_colours <- colours[!is.na(colours)]
+  it("has valid hemisphere values", {
+    for (atlas in atlases) {
+      hemis <- unique(atlas$core$hemi)
+      expect_true(all(hemis[!is.na(hemis)] %in% c("left", "right")))
+    }
+  })
 
-    if (length(non_na_colours) > 0) {
-      is_valid <- vapply(non_na_colours, function(col) {
-        grepl("^#[0-9A-Fa-f]{6}$|^#[0-9A-Fa-f]{8}$", col) ||
-          col %in% grDevices::colours()
-      }, logical(1))
-      expect_true(all(is_valid))
+  it("has atlas name and type", {
+    expect_equal(atlases$mcalt_cortical$type, "cortical")
+    expect_equal(atlases$mcalt_subcortical$type, "subcortical")
+    for (atlas in atlases) {
+      expect_true(nchar(atlas$atlas) > 0)
+    }
+  })
+
+  it("has non-empty core", {
+    expect_equal(nrow(atlases$mcalt_cortical$core), 80)
+    expect_equal(nrow(atlases$mcalt_subcortical$core), 42)
+  })
+})
+
+describe("mcalt 3D rendering support", {
+  it("has a mesh per subcortical structure", {
+    meshes <- atlases$mcalt_subcortical$data$meshes
+    expect_equal(nrow(meshes), nrow(atlases$mcalt_subcortical$core))
+  })
+
+  it("has no mesh large enough to be a whole hemisphere", {
+    meshes <- atlases$mcalt_subcortical$data$meshes
+    vertices <- vapply(meshes$mesh, function(x) nrow(x$vertices), numeric(1))
+    expect_lt(max(vertices), 5000)
+  })
+})
+
+describe("mcalt 2D plotting", {
+  it("can be plotted with ggseg", {
+    for (atlas in atlases) {
+      p <- ggplot2::ggplot() + ggseg::geom_brain(atlas = atlas)
+      expect_s3_class(p, "gg")
+    }
+  })
+
+  it("can be plotted with region fill", {
+    for (atlas in atlases) {
+      p <- ggplot2::ggplot() +
+        ggseg::geom_brain(
+          atlas = atlas,
+          mapping = ggplot2::aes(fill = region)
+        )
+      expect_s3_class(p, "gg")
+    }
+  })
+})
+
+describe("mcalt data quality", {
+  it("has unique labels per hemisphere", {
+    for (atlas in atlases) {
+      by_hemi <- split(atlas$core$label, atlas$core$hemi)
+      for (labels in by_hemi) {
+        labels <- labels[!is.na(labels)]
+        expect_equal(length(labels), length(unique(labels)))
+      }
+    }
+  })
+
+  it("has no empty region names", {
+    for (atlas in atlases) {
+      regions <- atlas$core$region
+      expect_true(all(nchar(regions[!is.na(regions)]) > 0))
+    }
+  })
+
+  it("has a valid hex colour for every region", {
+    for (atlas in atlases) {
+      expect_true(all(grepl("^#[0-9A-Fa-f]{6}$", atlas$palette)))
+    }
+  })
+
+  it("keeps context geometry out of the core and palette", {
+    for (atlas in atlases) {
+      expect_false(any(grepl("unknown|cortex_", atlas$core$label)))
+      expect_false(any(grepl("unknown|cortex_", names(atlas$palette))))
     }
   })
 })

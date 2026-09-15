@@ -47,11 +47,23 @@ plot(mcalt_cortical())
 
 ## Subcortical atlas
 
+The deep grey structures and the brain stem.
+
 ``` r
 plot(mcalt_subcortical())
 ```
 
 <img src="man/figures/README-subcortical-1.png" style="width:100.0%" />
+
+## Cerebellar atlas
+
+The cerebellar lobules and the vermis, on the SUIT flatmap.
+
+``` r
+plot(mcalt_cerebellar())
+```
+
+<img src="man/figures/README-cerebellar-1.png" style="width:100.0%" />
 
 ## Data source
 

@@ -1,6 +1,7 @@
 atlases <- list(
   mcalt_cortical = mcalt_cortical(),
-  mcalt_subcortical = mcalt_subcortical()
+  mcalt_subcortical = mcalt_subcortical(),
+  mcalt_cerebellar = mcalt_cerebellar()
 )
 
 describe("mcalt atlas structure", {
@@ -20,13 +21,16 @@ describe("mcalt atlas structure", {
   it("has valid hemisphere values", {
     for (atlas in atlases) {
       hemis <- unique(atlas$core$hemi)
-      expect_true(all(hemis[!is.na(hemis)] %in% c("left", "right")))
+      expect_true(
+        all(hemis[!is.na(hemis)] %in% c("left", "right", "vermis"))
+      )
     }
   })
 
   it("has atlas name and type", {
     expect_equal(atlases$mcalt_cortical$type, "cortical")
     expect_equal(atlases$mcalt_subcortical$type, "subcortical")
+    expect_equal(atlases$mcalt_cerebellar$type, "cerebellar")
     for (atlas in atlases) {
       expect_true(nchar(atlas$atlas) > 0)
     }
@@ -34,7 +38,8 @@ describe("mcalt atlas structure", {
 
   it("has non-empty core", {
     expect_equal(nrow(atlases$mcalt_cortical$core), 80)
-    expect_equal(nrow(atlases$mcalt_subcortical$core), 42)
+    expect_equal(nrow(atlases$mcalt_subcortical$core), 16)
+    expect_equal(nrow(atlases$mcalt_cerebellar$core), 26)
   })
 })
 
@@ -100,5 +105,33 @@ describe("mcalt data quality", {
       expect_false(any(grepl("unknown|cortex_", atlas$core$label)))
       expect_false(any(grepl("unknown|cortex_", names(atlas$palette))))
     }
+  })
+})
+
+describe("mcalt cerebellum", {
+  # The two pipelines name regions differently, so compare on the index the
+  # name carries rather than on the name itself.
+  indices <- function(atlas) as.integer(gsub("\\D", "", atlas$core$label))
+
+  it("holds every cerebellar index and nothing else", {
+    expect_setequal(indices(atlases$mcalt_cerebellar), 91:116)
+  })
+
+  it("keeps the vermis with the cerebellum, on its own hemisphere", {
+    hemis <- atlases$mcalt_cerebellar$core$hemi
+    expect_equal(sum(hemis == "vermis"), 8)
+    expect_equal(sum(hemis == "left"), 9)
+    expect_equal(sum(hemis == "right"), 9)
+  })
+
+  it("keeps the brain stem with the subcortical structures", {
+    subcortical <- indices(atlases$mcalt_subcortical)
+    expect_true(all(c(117L, 118L) %in% subcortical))
+    expect_length(intersect(subcortical, 91:116), 0)
+  })
+
+  it("has a distinct colour per lobule", {
+    palette <- atlases$mcalt_cerebellar$palette
+    expect_length(unique(palette), length(palette))
   })
 })

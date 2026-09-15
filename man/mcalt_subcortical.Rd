@@ -11,7 +11,8 @@ A \link[ggseg.formats:ggseg_atlas]{ggseg.formats::ggseg_atlas} object (subcortic
 }
 \description{
 Subcortical parcellation from the Mayo Clinic Adult Lifespan Template (MCALT)
-ADIR122 atlas.
+ADIR122 atlas. Covers the deep grey structures and the brain stem; the
+cerebellum is a separate atlas, \code{\link{mcalt_cerebellar}()}.
 }
 \examples{
 mcalt_subcortical()
@@ -23,6 +24,7 @@ Schwarz CG, et al. (2017). Alzheimer's & Dementia, 13(7):P1071.
 }
 \seealso{
 Other ggseg_atlases: 
+\code{\link{mcalt_cerebellar}()},
 \code{\link{mcalt_cortical}()}
 }
 \concept{ggseg_atlases}

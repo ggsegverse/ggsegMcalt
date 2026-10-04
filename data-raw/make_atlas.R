@@ -156,7 +156,7 @@ atlases <- create_wholebrain_from_volume(
   input_lut = lut,
   atlas_name = "mcalt",
   output_dir = "data-raw",
-  registration = "header",
+  projection_opts = list(registration = "header"),
   skip_existing = TRUE,
   cleanup = FALSE,
   steps = 1:4
